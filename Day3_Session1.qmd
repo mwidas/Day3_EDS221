@@ -2,7 +2,14 @@
 title: "Day3_EDS221"
 format: html
 editor: visual
+execute: 
+  warning: FALSE
 ---
+
+```{r}
+library(palmerpenguins)
+library(tidyverse)
+```
 
 ## Conditional Statements
 
@@ -105,5 +112,77 @@ for (i in seq_along(height)) {
   print(mean_height)
 }
 
+
+```
+
+## For Loops with conditions
+
+-   is.numeric() asks is this thing numeric
+
+-   mean(vec, na.rm = TRUE)
+
+```{r}
+#write a for loop with a conditional if statement that returns the means of all numeric variables in the penguins dataset
+
+for (i in seq_along(penguins)) {
+  if (is.numeric(penguins[[i]])) {
+     mean_penguin = mean(penguins[[i]], na.rm = TRUE)
+     print(mean_penguin)
+  }
+}
+  
+```
+
+## Functional Programming for easier iteration
+
+-   apply() to iterate over rows and columns. Margin = 1 = rows, Margin = 2 = columns
+
+```{r}
+# example with apply()
+apply(X = mtcars, MARGIN = 2, FUN = median)
+# or
+apply(mtcars, 2, median)
+```
+
+-   Dplyr::
+
+```{r}
+# dplyr - mean flipper length of penguins by species
+penguins %>% 
+  group_by(species, sex, island) %>% 
+# show summary of mean, sd, and max body mass by species and sex
+  summarize(mean_flipper_length = mean(flipper_length_mm, na.rm = TRUE),
+          sd_flipper_length = sd(flipper_length_mm, na.rm = TRUE),
+            max_body_mass = max(body_mass_g, na.rm = TRUE))
+
+```
+
+```{r}
+# start with data set penguins and then
+penguins %>% 
+# group by species and island and then 
+  group_by(species, island) %>% 
+# find summary statistic of mean and put them in a table by iterating across columns where the columns are numeric and remove missing values
+  summarize(across(where(is.numeric), mean, na.rm = TRUE))
+```
+
+## Detecting a string pattern
+
+```{r}
+food <- "I love enchiladas"
+
+if (str_detect(food, "burritos")) {
+  print("Yay Burritos!")
+} else {
+  print("What about burritos?")
+}
+
+food <- "I love burritos"
+
+if (str_detect(food, "burritos")) {
+  print("Yay Burritos!")
+} else {
+  print("What about burritos?")
+}
 
 ```
