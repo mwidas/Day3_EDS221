@@ -1,0 +1,46 @@
+---
+title: "Day3_EDS221"
+format: html
+editor: visual
+---
+
+## Conditional Statements
+
+```{r}
+#store temperature as 98.2
+temperature <- 98.2
+
+if (temperature > 97) {
+  print("Temperature Warning")
+}
+
+#store temperature as 95 and nothing returns because condition is not met
+temperature <- 95
+
+if (temperature > 97) {
+  print("Temperature Warning")
+}
+
+#shows no temperature warning
+temperature <- 95
+
+if (temperature > 97) {
+  print("Temperature Warning")
+} else
+  print("No Temperature Warning")
+
+```
+
+```{r}
+# Create an if else statement for blue whale lengths, create a variable blue whale, which has a value of 40. add an if else statements that returns giant if the length exceeds 35, medium if the length is between 20 and 35, or small if the length is less than 20
+blue_whale <- 40
+
+if (blue_whale > 35) {
+  print("Giant")
+} else if (blue_whale >= 20 & blue_whale <= 35) {
+  print("Medium")
+} else if (blue_whale < 20) {
+  print("Small")
+}
+ 
+```
