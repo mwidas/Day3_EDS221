@@ -51,8 +51,8 @@ if (blue_whale > 35) {
 housing_type <- "single"
 
 switch(housing_type, 
-       "single" = print("400")
-       "double" = print("750")
+       "single" = print("400"),
+       "double" = print("750"),
        "whole" = print("1100"))
 
 if (housing_type == "whole") {
@@ -62,4 +62,48 @@ if (housing_type == "whole") {
 } else if (housing_type == "single") {
   print("400")
 }
+```
+
+## For Loops
+
+```{r}
+# create a vector named height
+height <- c(58, 61, 65, 72, 89, 94, 101)
+# this line returns 1,2,3,4,5,6,7
+for (i in seq_along(height)) {
+  half_height = height[i] / 2
+  print(half_height)
+}
+```
+
+```{r}
+#for each value in the height vector, return the sum of the value + the one right after it
+
+height <- c(58, 61, 65, 72, 89, 94, 101)
+
+for (i in seq_along(height)) {
+  consecutive_sum_height = height[i] + height[i + 1]
+  print(consecutive_sum_height)
+}
+
+# to not get a na value at the end
+
+height <- c(58, 61, 65, 72, 89, 94, 101)
+
+for (i in seq(1:(length(height) - 1))) {
+   consecutive_sum_height = height[i] + height[i + 1]
+  print(consecutive_sum_height)
+}
+```
+
+```{r}
+# write a for loop that calculates the value of height for each element divided by the mean of the entire vector
+height <- c(58, 61, 65, 72, 89, 94, 101)
+
+for (i in seq_along(height)) {
+  mean_height = height[i] / mean(height)
+  print(mean_height)
+}
+
+
 ```
